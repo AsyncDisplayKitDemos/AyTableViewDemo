@@ -71,6 +71,21 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 100;
 }
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *header=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
+    header.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    
+    ASTextCellNode *node=[[ASTextCellNode alloc]init];
+    node.frame=CGRectMake(0, 0, 100, 20);
+    node.text=[NSString stringWithFormat:@"section%ld",(long)section];
+    [header addSubnode:node];
+    return header;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 40;
+}
 @end
 
 
